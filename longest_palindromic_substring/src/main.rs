@@ -1,5 +1,6 @@
 fn longest_palindrome(s: &String) -> String {
     let str_len = s.len();
+    let str_data = s.clone().into_bytes();
     let mut l: Vec<Vec<bool>> = vec![vec![false; str_len]; str_len];
     let mut max_len = 1;
     let mut start_pos = 0;
@@ -13,10 +14,10 @@ fn longest_palindrome(s: &String) -> String {
         for start in 0..=str_len - len {
             let end = start + len - 1;
 
-            if len == 2 && s.chars().nth(start) == s.chars().nth(end) {
+            if len == 2 && str_data[start] == str_data[end] {
                 l[start][end] = true;
             } else {
-                l[start][end] = l[start + 1][end - 1] && s.chars().nth(start) == s.chars().nth(end);
+                l[start][end] = l[start + 1][end - 1] && str_data[start] == str_data[end];
             }
 
             if l[start][end] && len > max_len {
