@@ -1,5 +1,5 @@
 [package]
-name = "longest_palindromic_substring"
+name = "problem_67"
 version = "0.1.0"
 edition = "2021"
 
